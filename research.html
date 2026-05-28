@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樂舞記憶與文化實踐研究 · 珈斑樂舞團</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Sans+Myanmar:wght@400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --cream:#F5EDD8;
+  --text:#2A1A08;
+  --muted:#7A5C38;
+  --teal:#2E6860;
+  --gold:#C8982A;
+  --accent:#C8582A;
+  --white-card:rgba(255,255,255,.62);
+  --white-border:rgba(255,255,255,.86);
+  --soft-line:rgba(200,152,42,.20);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Serif TC',serif;
+  background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='46'%3E%3Cpath d='M0 23 Q17.5 6 35 23 Q52.5 40 70 23 Q87.5 6 105 23 Q122.5 40 140 23' fill='none' stroke='%238FBFB8' stroke-width='1.3' opacity='0.45'/%3E%3Cpath d='M0 34 Q17.5 17 35 34 Q52.5 51 70 34 Q87.5 17 105 34 Q122.5 51 140 34' fill='none' stroke='%238FBFB8' stroke-width='0.9' opacity='0.28'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:140px 46px;
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.75;
+}
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 40px;
+  background:rgba(245,237,216,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,152,42,.15);
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-zh{font-size:14px;font-weight:700;color:#8a6010;display:block;line-height:1.25;}
+.nav-my{font-family:'Noto Sans Myanmar',sans-serif;font-size:11px;color:var(--teal);display:block;}
+.nav-back{
+  display:flex;align-items:center;gap:7px;
+  font-size:12px;color:var(--muted);text-decoration:none;
+  padding:6px 14px;border-radius:20px;
+  border:1px solid rgba(200,152,42,.25);transition:all .25s;
+}
+.nav-back:hover{background:rgba(200,152,42,.1);color:#8a6010;}
+.research-head{
+  max-width:960px;
+  margin:0 auto;
+  padding:116px 40px 34px;
+}
+.research-title{
+  font-size:clamp(36px,6vw,72px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:.03em;
+  color:var(--text);
+  margin-bottom:22px;
+}
+.research-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.research-tab{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:13px;
+  line-height:1;
+  color:var(--muted);
+  padding:10px 16px;
+  border:1px solid rgba(200,152,42,.28);
+  border-radius:999px;
+  background:rgba(255,255,255,.42);
+  backdrop-filter:blur(6px);
+  transition:all .25s;
+}
+.research-tab:hover{background:rgba(200,152,42,.1);color:#8a6010;}
+.research-tab.active{background:var(--accent);border-color:var(--accent);color:white;}
+.main{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 40px 100px;
+}
+.section{display:block;}
+.section-head{margin:20px 0 26px;}
+.accent-line{width:48px;height:2px;background:var(--accent);border-radius:2px;margin-bottom:16px;}
+.section-head h2{font-size:30px;font-weight:700;line-height:1.2;color:var(--text);margin-bottom:8px;}
+.section-head .desc{display:block;font-size:14px;color:var(--muted);line-height:1.8;}
+/* Cards and grids */
+.era-grid,.interview-grid,.practice-grid{display:grid;gap:18px;}
+.era-grid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr));}
+.interview-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.practice-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+.era-card,.interview-card,.practice-card,.loc-card,.era-detail,.map-svg-wrap,.map-legend{
+  background:var(--white-card);
+  border:1.5px solid var(--white-border);
+  border-radius:20px;
+  backdrop-filter:blur(6px);
+}
+.era-card,.interview-card,.practice-card,.loc-card{transition:transform .3s,box-shadow .3s;cursor:pointer;}
+.era-card:hover,.interview-card:hover,.practice-card:hover,.loc-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(176,120,0,.13);}
+.era-card.active{box-shadow:0 0 0 2px rgba(200,88,42,.32);}
+.era-card-header{display:flex;gap:14px;align-items:flex-start;padding:18px 18px 12px;}
+.era-badge{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.era-years,.era-sub,.era-count,.interview-meta,.practice-cat,.legend-item,.loc-desc{font-family:'Noto Sans TC',sans-serif;}
+.era-years{font-size:11px;color:rgba(122,92,56,.65);margin-bottom:2px;}
+.era-name{font-size:18px;font-weight:700;color:var(--text);line-height:1.3;}
+.era-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.era-body{padding:0 18px 18px;}
+.era-tag-row,.interview-tags,.loc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;}
+.era-tag,.i-tag,.loc-tag{font-family:'Noto Sans TC',sans-serif;font-size:10px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;}
+.era-motiv,.interview-quote,.practice-desc,.loc-desc{font-size:13px;line-height:1.8;color:var(--muted);}
+.era-count{display:flex;gap:7px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--soft-line);font-size:11px;color:var(--muted);}
+.era-count .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.era-detail{display:none;margin-top:22px;padding:24px;}
+.era-detail.active{display:block;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px;}
+.detail-col-title{display:flex;align-items:center;gap:10px;font-family:'Noto Sans TC',sans-serif;font-size:12px;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;}
+.detail-col-title::after{content:'';height:1px;background:var(--soft-line);flex:1;}
+.memory-item{background:rgba(255,255,255,.42);border-left:3px solid rgba(200,88,42,.25);border-radius:0 14px 14px 0;padding:12px 14px;margin-bottom:10px;font-size:13px;color:var(--text);}
+.memory-item .speaker{font-family:'Noto Sans TC',sans-serif;font-size:11px;color:var(--accent);margin-bottom:4px;}
+/* filters/interviews */
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.filter-chip{border:1px solid rgba(200,152,42,.28);border-radius:999px;background:rgba(255,255,255,.42);color:var(--muted);padding:7px 14px;font-size:12px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all .25s;}
+.filter-chip:hover{background:rgba(200,152,42,.1);color:#8a6010;}
+.filter-chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.interview-card{padding:18px;}
+.interview-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;}
+.interview-name{font-size:18px;font-weight:700;color:var(--text);}
+.interview-meta{font-size:11px;color:var(--muted);}
+.i-tag{background:rgba(200,152,42,.11);color:#8a6010;}
+.memory-section-divider{font-family:'Noto Sans TC',sans-serif;font-size:10px;letter-spacing:.12em;color:rgba(122,92,56,.55);margin:10px 0 8px;}
+.interview-quote{border-left:3px solid rgba(200,88,42,.25);padding-left:12px;font-style:italic;}
+/* map */
+.map-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.9fr);gap:20px;align-items:start;}
+.map-svg-wrap,.map-legend{padding:18px;}
+.map-container svg{max-width:100%;height:auto;display:block;}
+.legend-title,.loc-name{font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.legend-item{display:flex;align-items:center;gap:8px;padding:8px 0;color:var(--muted);font-size:13px;}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.legend-count{margin-left:auto;font-size:11px;color:rgba(122,92,56,.7);}
+.loc-card{padding:16px;margin-top:10px;}
+.loc-name{font-size:16px;margin-bottom:6px;}
+.loc-desc{font-size:12px;margin-bottom:10px;}
+/* practice */
+.practice-card{overflow:hidden;}
+.practice-top{height:5px;}
+.practice-body{padding:18px 18px 20px;}
+.practice-icon{font-size:28px;margin-bottom:12px;}
+.practice-name{font-size:20px;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:5px;}
+.practice-cat{font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;}
+.practice-desc{margin-bottom:14px;}
+.practice-status{display:flex;align-items:center;gap:8px;padding-top:12px;margin-top:12px;border-top:1px solid var(--soft-line);}
+.status-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+/* modal and tooltip */
+.tooltip{position:fixed;z-index:300;pointer-events:none;padding:8px 10px;border-radius:10px;background:rgba(42,26,8,.9);color:white;font-family:'Noto Sans TC',sans-serif;font-size:11px;opacity:0;transform:translateY(4px);transition:all .15s;}
+.tooltip.show{opacity:1;transform:translateY(0);}
+.overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(42,26,8,.38);z-index:260;padding:20px;}
+.overlay.open{display:flex;}
+.modal{width:min(720px,100%);max-height:82vh;overflow:auto;background:rgba(255,255,255,.96);border:1.5px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:0 18px 60px rgba(42,26,8,.18);}
+.modal-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid var(--soft-line);}
+.modal-title{font-size:24px;font-weight:700;color:var(--text);}
+.modal-close{border:0;background:rgba(200,88,42,.08);color:var(--accent);width:36px;height:36px;border-radius:50%;font-size:22px;cursor:pointer;}
+.modal-body{padding:20px;font-size:15px;line-height:1.9;color:var(--text);}
+.modal-body strong{color:var(--accent);}
+@media(max-width:800px){
+  .research-head,.main{padding-left:20px;padding-right:20px;}
+  .site-nav{padding:12px 20px;}
+  .map-layout,.practice-grid,.detail-grid{grid-template-columns:1fr;}
+}
+@media(max-width:520px){
+  .research-title{font-size:36px;}
+  .research-tabs{gap:8px;}
+  .research-tab{font-size:12px;padding:9px 12px;}
+}
+
+.research-head{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;padding-bottom:90px;}
+.research-tabs{margin-top:4px;}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="46" stroke="#C8982A" stroke-width="2"/>
+      <circle cx="50" cy="50" r="36" stroke="#C8982A" stroke-width=".8" stroke-dasharray="4 3"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(0 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(45 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(90 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(135 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(180 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(225 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(270 50 50)"/>
+      <ellipse cx="50" cy="18" rx="5" ry="8" fill="#C8982A" opacity=".55" transform="rotate(315 50 50)"/>
+      <text x="50" y="47" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="10" font-weight="700" fill="#A87820">珈斑</text>
+      <text x="50" y="60" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="7.5" fill="#A87820">樂舞團</text>
+    </svg>
+    <div><span class="nav-zh">珈斑樂舞團</span><span class="nav-my">ကြပ်ပန်း</span></div>
+  </a>
+  <a href="community.html" class="nav-back">← 社群故事</a>
+</nav>
+<header class="research-head">
+  <h1 class="research-title">樂舞記憶與文化實踐研究</h1>
+  <div class="research-tabs">
+      <a class="research-tab" href="community-eras.html">年代與背景</a>
+      <a class="research-tab" href="community-interviews.html">訪談紀錄</a>
+      <a class="research-tab" href="community-map.html">台灣分布地圖</a>
+      <a class="research-tab" href="community-practice.html">樂舞實踐現況</a>
+  </div>
+</header>
+</body>
+</html>

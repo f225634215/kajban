@@ -37,7 +37,10 @@ nav{
   border:1px solid rgba(200,152,42,0.25);transition:all .25s;
 }
 .nav-back:hover{background:rgba(200,152,42,.1);color:#8a6010;}
-@media(max-width:600px){nav{padding:12px 20px;}}
+.nav-actions{display:flex;align-items:center;gap:8px;}
+.nav-research{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:20px;border:1px solid rgba(200,152,42,0.25);transition:all .25s;background:rgba(255,255,255,.26);}
+.nav-research:hover{background:rgba(200,152,42,.1);color:#8a6010;}
+@media(max-width:600px){nav{padding:12px 20px;}.nav-research{font-size:11px;padding:5px 10px;}}
 
 /* HERO */
 .page-hero{padding:110px 40px 52px;max-width:960px;margin:0 auto;}
@@ -168,7 +171,10 @@ nav{
     </svg>
     <div><span class="nav-zh">珈斑樂舞團</span><span class="nav-my">ကြပ်ပန်း</span></div>
   </a>
-  <a href="index.html" class="nav-back">← 返回首頁</a>
+  <div class="nav-actions">
+    <a href="research.html" class="nav-research">研究</a>
+    <a href="index.html" class="nav-back">← 返回首頁</a>
+  </div>
 </nav>
 
 <div class="page-hero">

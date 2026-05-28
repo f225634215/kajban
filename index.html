@@ -40,6 +40,8 @@ nav {
 .nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
 .nav-zh { font-size:14px; font-weight:700; color:#8a6010; display:block; line-height:1.25; }
 .nav-my { font-family:'Noto Sans Myanmar',sans-serif; font-size:11px; color:#2e6860; display:block; }
+.nav-link { font-size:12px; color:#7A5C38; text-decoration:none; padding:6px 14px; border:1px solid rgba(200,152,42,.25); border-radius:20px; transition:all .25s; background:rgba(255,255,255,.28); }
+.nav-link:hover { background:rgba(200,152,42,.1); color:#8a6010; }
 
 /* ── FIGURES ROW ── */
 .figures-row {
@@ -82,9 +84,9 @@ nav {
 /* ── CHAPTER CARDS ── */
 .cards-row {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:clamp(14px,2.5vw,28px);
-  width:100%; max-width:960px;
+  grid-template-columns:repeat(5,minmax(150px,1fr));
+  gap:clamp(12px,2vw,22px);
+  width:100%; max-width:1120px;
 }
 
 .chapter-card {
@@ -114,6 +116,7 @@ nav {
 .c2::before{background:#7A3AAA}
 .c3::before{background:#C8980A}
 .c4::before{background:#1A8A5A}
+.c5::before{background:#2E6860}
 
 .card-icon {
   width:clamp(80px,12vw,120px);
@@ -147,6 +150,7 @@ nav {
 /* ── RESPONSIVE ── */
 @media(max-width:700px){
   nav{padding:12px 20px;}
+  .nav-link{font-size:11px;padding:5px 10px;}
   .figures-row svg{transform:scale(.68);transform-origin:bottom center;}
   .figures-row{gap:0;}
   .cards-row{grid-template-columns:1fr 1fr; gap:12px;}
@@ -405,7 +409,6 @@ nav {
       <div class="card-my">ဂီတ နှင့် ကမ်ပာ</div>
       <div class="card-desc">舞蹈、樂器<br>珈斑的初心</div>
     </a>
-
   </div>
 
   <div class="footer-strip">© 2026 珈斑樂舞團 · EST. TAIPEI</div>
